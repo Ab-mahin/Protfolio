@@ -1,0 +1,269 @@
+/* ===========================================
+   GOOGLE FONTS IMPORT (must be first)
+   =========================================== */
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
+
+/* ===========================================
+   TAILWIND CSS IMPORTS
+   =========================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================
+   CSS VARIABLES & CUSTOM PROPERTIES
+   =========================================== */
+:root {
+  /* Primary Color Palette - Light Theme */
+  --color-primary: #ffffff;
+  --color-secondary: #6b7280;
+  --color-tertiary: #f9fafb;
+  
+  /* Light Theme Colors */
+  --color-black-100: #1f2937;
+  --color-black-200: #111827;
+  --color-white-100: #ffffff;
+  
+  /* Additional Theme Colors */
+  --color-midnight: #f3f4f6;
+  --color-navy: #e5e7eb;
+  --color-indigo: #d1d5db;
+  --color-storm: #9ca3af;
+  
+  /* Accent Colors */
+  --color-aqua: #1f2937;
+  --color-mint: #10b981;
+  --color-royal: #1f2937;
+  --color-lavender: #8b5cf6;
+  --color-fuchsia: #ec4899;
+  --color-orange: #f97316;
+  --color-sand: #f59e0b;
+  --color-coral: #ef4444;
+  
+  /* Animation Variables */
+  --animate-orbit: orbit 50s linear infinite;
+  --animate-marquee: marquee 50s linear infinite;
+  --animate-marquee-vertical: marquee-vertical 50s linear infinite;
+}
+
+/* ===========================================
+   BASE STYLES & RESET
+   =========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: white;
+  font-family: "Funnel Display", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  color: #1f2937;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===========================================
+   CUSTOM ANIMATIONS & KEYFRAMES
+   =========================================== */
+@keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg))
+      translateY(calc(var(--radius) * 1px)) 
+      rotate(calc(var(--angle) * -1deg));
+  }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg))
+      translateY(calc(var(--radius) * 1px))
+      rotate(calc((var(--angle) * -1deg) - 360deg));
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+/* Utility: apply the custom orbit animation using CSS variables */
+.animate-orbit {
+  animation: orbit calc(var(--duration) * 1s) linear infinite;
+}
+
+/* ===========================================
+   LAYOUT & SPACING UTILITIES
+   =========================================== */
+.c-space {
+  @apply sm:px-10 px-5 lg:px-16;
+}
+
+.section-spacing {
+  @apply min-h-screen mt-20 md:mt-32;
+}
+
+/* ===========================================
+   TYPOGRAPHY UTILITIES
+   =========================================== */
+.text-heading {
+  @apply font-bold text-3xl md:text-4xl text-gray-800;
+}
+
+.headtext {
+  @apply mt-2 mb-2 text-xl text-gray-800;
+}
+
+.subtext {
+  @apply text-gray-600 text-sm md:text-base text-pretty;
+}
+
+/* ===========================================
+   INTERACTION & ANIMATION UTILITIES
+   =========================================== */
+.hover-animation {
+  @apply hover:-translate-y-1 duration-200;
+}
+
+/* ===========================================
+   NAVIGATION COMPONENTS
+   =========================================== */
+.nav-ul {
+  @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20;
+}
+
+.nav-li {
+  @apply text-gray-600 hover:text-gray-800 max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
+}
+
+.nav-link {
+  @apply text-lg md:text-base hover:text-gray-800 transition-colors;
+}
+
+/* ===========================================
+   BUTTON COMPONENTS
+   =========================================== */
+.btn {
+  @apply relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-white border border-gray-200 w-[12rem] cursor-pointer overflow-hidden text-gray-800;
+}
+
+/* ===========================================
+   GRID LAYOUT COMPONENTS
+   =========================================== */
+.grid-1 {
+  @apply row-span-2 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+}
+
+.grid-2 {
+  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+}
+
+.grid-3 {
+  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+}
+
+.grid-4 {
+  @apply row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+}
+
+.grid-5 {
+  @apply row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+}
+
+/* Grid Color Variants */
+.grid-default-color {
+  @apply p-6 bg-gradient-to-b from-gray-100 to-gray-200 rounded-2xl;
+}
+
+.grid-special-color {
+  @apply p-6 bg-gradient-to-b from-gray-100 to-gray-200 rounded-2xl;
+}
+
+.grid-black-color {
+  @apply p-6 bg-gradient-to-tl from-gray-200 via-gray-100 to-gray-200 rounded-2xl;
+}
+
+/* ===========================================
+   FORM & INPUT COMPONENTS
+   =========================================== */
+.field-label {
+  @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-700;
+}
+
+.field-input {
+  @apply w-full min-h-10 rounded-md px-3 py-2 text-sm bg-gray-50 transition duration-200 placeholder-gray-500 border border-gray-300 mt-2 text-gray-900;
+}
+
+.field-input:focus {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-800 focus:border-gray-800 focus:bg-white;
+}
+
+/* Legacy Field Classes (for backward compatibility) */
+.feild-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+/* ===========================================
+   RESPONSIVE UTILITIES
+   =========================================== */
+@media (max-width: 640px) {
+  .c-space {
+    @apply px-4;
+  }
+  
+  .text-heading {
+    @apply text-2xl;
+  }
+}
+
+@media (min-width: 1024px) {
+  .c-space {
+    @apply px-16;
+  }
+  
+  .text-heading {
+    @apply text-5xl;
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY & FOCUS STATES
+   =========================================== */
+*:focus {
+  outline: 2px solid #1f2937;
+  outline-offset: 2px;
+}
+
+/* ===========================================
+   PRINT STYLES
+   =========================================== */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
