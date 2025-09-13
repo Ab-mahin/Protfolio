@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer'; // NEW IMPORT
 import { coding, csharp, dotnetPink, pic3, pic1 } from "../assets";
 import Card from "../card/card";
 import { CopyEmailButton } from "./canvas"; 
-
+//Ab
 import cplusplus from "../assets/tech/cplusplus.svg";
 import dotnet from "../assets/tech/dotnet.svg";
 import sqlite from "../assets/tech/sqlite.svg";
