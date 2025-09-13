@@ -20,6 +20,11 @@ import Experience from "./Experience";
 import Works from "./Works";
 import Achievements from "./Achievements";
 import Contact from "./Contact";
+import Education from "./Education";
+import PersonalProjects from "./PersonalProjects";
+import Portfolio from "./Portfolio";
+import Writing from "./Writing";
+import Gallery from "./Gallery";
 import CanvasLoader from "./Loader";
 import Footer from "./Footer";
 import Card from "../card/card";
@@ -35,6 +40,11 @@ export {
   Footer,
   Achievements,
   Contact,
+  Education,
+  PersonalProjects,
+  Portfolio,
+  Writing,
+  Gallery,
   CanvasLoader,
   Alert, 
   Timeline, 

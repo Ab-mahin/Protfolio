@@ -11,6 +11,7 @@ import { Achievement } from "./Achievement";
 import Project from "./Project";
 import ProjectDetails from "./ProjectDetails";
 import { CustomeGlobe } from "./CustomeGlobe";
+import { InfiniteMovingCards } from "./InfiniteMovingCards";
 
 
 
@@ -29,4 +30,5 @@ export {
   Project,
   ProjectDetails,
   CustomeGlobe,
+  InfiniteMovingCards,
 };

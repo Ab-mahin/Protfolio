@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
+        'modern': ['Inter', 'sans-serif'],
+      },
       colors: {
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
@@ -34,9 +38,6 @@ export default {
       },
       backgroundImage: {
         "hero-pattern": "url('/src/assets/herobg.png')",
-        "blue-text-gradient": "linear-gradient(90deg, #1f2937 0%, #374151 100%)",
-        "green-text-gradient": "linear-gradient(90deg, #10b981 0%, #059669 100%)",
-        "pink-text-gradient": "linear-gradient(90deg, #ec4899 0%, #be185d 100%)",
       },
       spacing: {
         'c-space': 'clamp(2rem, 5vw, 4rem)',

@@ -1,7 +1,7 @@
 /* ===========================================
    GOOGLE FONTS IMPORT (must be first)
    =========================================== */
-@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 /* ===========================================
    TAILWIND CSS IMPORTS
@@ -11,34 +11,88 @@
 @tailwind utilities;
 
 /* ===========================================
+   INFINITE MOVING CARDS ANIMATION
+   =========================================== */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 1rem));
+  }
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+/* ===========================================
+   CUSTOM UTILITY CLASSES
+   =========================================== */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+/* Remove all button focus borders */
+button:focus,
+button:focus-visible,
+button:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove default input focus borders but allow custom styling */
+input:focus,
+textarea:focus {
+  outline: none !important;
+}
+
+/* Smooth page transitions */
+.transition-transform {
+  will-change: transform;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Vertical text for navbar */
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* ===========================================
    CSS VARIABLES & CUSTOM PROPERTIES
    =========================================== */
 :root {
-  /* Primary Color Palette - Light Theme */
-  --color-primary: #ffffff;
-  --color-secondary: #6b7280;
-  --color-tertiary: #f9fafb;
+  /* Primary Color Palette */
+  --color-primary: #050816;
+  --color-secondary: #aaa6c3;
+  --color-tertiary: #151030;
   
-  /* Light Theme Colors */
-  --color-black-100: #1f2937;
-  --color-black-200: #111827;
-  --color-white-100: #ffffff;
+  /* Dark Theme Colors */
+  --color-black-100: #100d25;
+  --color-black-200: #090325;
+  --color-white-100: #f3f3f3;
   
   /* Additional Theme Colors */
-  --color-midnight: #f3f4f6;
-  --color-navy: #e5e7eb;
-  --color-indigo: #d1d5db;
-  --color-storm: #9ca3af;
+  --color-midnight: #06091f;
+  --color-navy: #161a31;
+  --color-indigo: #1f1e39;
+  --color-storm: #282b4b;
   
   /* Accent Colors */
-  --color-aqua: #1f2937;
-  --color-mint: #10b981;
-  --color-royal: #1f2937;
-  --color-lavender: #8b5cf6;
-  --color-fuchsia: #ec4899;
-  --color-orange: #f97316;
-  --color-sand: #f59e0b;
-  --color-coral: #ef4444;
+  --color-aqua: #33c2cc;
+  --color-mint: #57db96;
+  --color-royal: #5c33cc;
+  --color-lavender: #7a57db;
+  --color-fuchsia: #ca2f8c;
+  --color-orange: #cc6033;
+  --color-sand: #d6995c;
+  --color-coral: #ea4884;
   
   /* Animation Variables */
   --animate-orbit: orbit 50s linear infinite;
@@ -60,14 +114,16 @@ html {
 }
 
 body {
-  background: white;
-  font-family: "Funnel Display", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  background: var(--color-primary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  color: #1f2937;
+  color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 /* ===========================================
@@ -124,15 +180,46 @@ body {
    TYPOGRAPHY UTILITIES
    =========================================== */
 .text-heading {
-  @apply font-bold text-3xl md:text-4xl text-gray-800;
+  @apply font-bold text-3xl md:text-4xl;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .headtext {
-  @apply mt-2 mb-2 text-xl text-gray-800;
+  @apply mt-2 mb-2 text-xl;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .subtext {
-  @apply text-gray-600 text-sm md:text-base text-pretty;
+  @apply text-neutral-400 text-sm md:text-base text-pretty;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Modern Typography Classes */
+.font-modern {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+.font-modern-bold {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.font-modern-medium {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 }
 
 /* ===========================================
@@ -150,18 +237,18 @@ body {
 }
 
 .nav-li {
-  @apply text-gray-600 hover:text-gray-800 max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
+  @apply text-neutral-400 hover:text-white max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
 }
 
 .nav-link {
-  @apply text-lg md:text-base hover:text-gray-800 transition-colors;
+  @apply text-lg md:text-base hover:text-white transition-colors;
 }
 
 /* ===========================================
    BUTTON COMPONENTS
    =========================================== */
 .btn {
-  @apply relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-white border border-gray-200 w-[12rem] cursor-pointer overflow-hidden text-gray-800;
+  @apply relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden;
 }
 
 /* ===========================================
@@ -189,37 +276,52 @@ body {
 
 /* Grid Color Variants */
 .grid-default-color {
-  @apply p-6 bg-gradient-to-b from-gray-100 to-gray-200 rounded-2xl;
+  @apply p-6 bg-gradient-to-b from-storm to-indigo rounded-2xl;
 }
 
 .grid-special-color {
-  @apply p-6 bg-gradient-to-b from-gray-100 to-gray-200 rounded-2xl;
+  @apply p-6 bg-gradient-to-b from-royal to-lavender rounded-2xl;
 }
 
 .grid-black-color {
-  @apply p-6 bg-gradient-to-tl from-gray-200 via-gray-100 to-gray-200 rounded-2xl;
+  @apply p-6 bg-gradient-to-tl from-[#3A3A3A] via-[#242424] to-[#3A3A3A] rounded-2xl;
 }
 
 /* ===========================================
    FORM & INPUT COMPONENTS
    =========================================== */
 .field-label {
-  @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-700;
+  @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
 }
 
 .field-input {
-  @apply w-full min-h-10 rounded-md px-3 py-2 text-sm bg-gray-50 transition duration-200 placeholder-gray-500 border border-gray-300 mt-2 text-gray-900;
+  @apply w-full min-h-10 rounded-md px-3 py-2 text-sm bg-white/10 transition duration-200 placeholder-neutral-500 border border-white/10 mt-2;
 }
 
 .field-input:focus {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-800 focus:border-gray-800 focus:bg-white;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20;
+}
+
+/* Enhanced contact form input styling using portfolio colors */
+.contact-input {
+  @apply w-full px-4 py-3 rounded-lg transition-all duration-300 focus:outline-none;
+}
+
+.contact-input:focus {
+  border-color: rgba(170, 166, 195, 0.5) !important;
+  box-shadow: 0 0 0 2px rgba(170, 166, 195, 0.3), 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.contact-input:hover {
+  border-color: rgba(170, 166, 195, 0.3) !important;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Legacy Field Classes (for backward compatibility) */
 .feild-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #374151;
+  color: #9ca3af;
   margin-bottom: 0.5rem;
 }
 
@@ -249,10 +351,7 @@ body {
 /* ===========================================
    ACCESSIBILITY & FOCUS STATES
    =========================================== */
-*:focus {
-  outline: 2px solid #1f2937;
-  outline-offset: 2px;
-}
+/* Remove default focus styles but allow custom styling for form elements */
 
 /* ===========================================
    PRINT STYLES

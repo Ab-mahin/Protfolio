@@ -1,45 +1,131 @@
-import {motion} from 'framer-motion'
-import { styles } from "../styles";
-import {ComputersCanvas} from './canvas'
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 const Hero = () => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Initialize with current theme to prevent flash
+    if (typeof document !== 'undefined') {
+      return document.documentElement.classList.contains('dark');
+    }
+    return true; // fallback for SSR
+  });
+
+  useEffect(() => {
+    const handleThemeChange = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+
+    handleThemeChange();
+    const observer = new MutationObserver(handleThemeChange);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className='relative w-full h-screen mx-auto'>
-
-    <div className={`${styles.paddingX} absolute inset-10 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
-      <div className='flex flex-col justify-center items-center mt-5'>
-        <div className='w-5 h-5 rounded-full bg-[#915eff]'/>
-        <div className='w-1 sm:h-80 h-40 violet-gradient'/>
-      </div>
-
-      <div>
-        <h1 className={`${styles.heroHeadText} text-white`}>Hi, I'm <span className='text-[#915eff]'>Mahin</span></h1>
-        <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-          I develop 3D visuals, user <br className='sm:block hidden'/>
-          interface and web application
-        </p>
-      </div>
-    </div>
-    <ComputersCanvas />
-
-    {/* <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
-        <a href='#about'>
-          <div className='w-[35px] h-[64px] rounded-3xl border-4 border-[var(--color-secondary)] flex justify-center items-start p-2'>
-            <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
-              className='w-3 h-3 rounded-full bg-[var(--color-secondary)] mb-1'
-            />
+    <section 
+      id="home" 
+      className="min-h-screen flex items-center justify-center px-4 py-8"
+      style={{ 
+        backgroundColor: isDarkMode ? '#000000' : '#F5F5F5',
+        color: isDarkMode ? '#F5F5F5' : '#262626'
+      }}
+    >
+      <div className="max-w-3xl mx-auto w-full">
+        <div
+          className="rounded-xl p-8 md:p-10 border"
+          style={{ backgroundColor: isDarkMode ? '#050505' : '#FFFFFF', borderColor: isDarkMode ? '#1f1f1f' : '#e5e7eb' }}
+        >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-12"
+        >
+          <div className="flex items-center mb-6">
+            <div 
+              className="w-10 h-10 rounded-full mr-4 flex items-center justify-center border"
+              style={{ backgroundColor: isDarkMode ? '#0a0a0a' : '#F5F5F5', borderColor: isDarkMode ? '#262626' : '#e5e7eb' }}
+            >
+              <span 
+                className="text-sm font-bold"
+                style={{ color: isDarkMode ? '#F5F5F5' : '#262626' }}
+              >
+                AM
+              </span>
+            </div>
           </div>
-        </a>
-      </div> */}
+          
+          <h1 
+            className="text-4xl md:text-5xl font-modern-bold mb-3 bg-clip-text text-transparent"
+            style={{ backgroundImage: isDarkMode ? 'linear-gradient(to bottom, #fafafa, #d4d4d4)' : 'linear-gradient(to bottom, #262626, #737373)' }}
+          >
+            Hi, I'm Ab Mahin!
+          </h1>
+          <h2 
+            className="text-lg md:text-xl mb-2 font-modern" 
+            style={{ 
+              fontWeight: 400,
+              color: isDarkMode ? '#D1D5DB' : '#6B7280'
+            }}
+          >
+            Software Developer, Problem Solver, and Tech Enthusiast.
+          </h2>
+          <p 
+            className="text-sm font-modern"
+            style={{ color: isDarkMode ? '#9CA3AF' : '#6B7280' }}
+          >
+            (Ab-Mahin for non-native speakers)
+          </p>
+        </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <h3 
+            className="text-base font-modern-medium mb-4"
+            style={{ color: isDarkMode ? '#D1D5DB' : '#6B7280' }}
+          >
+            Currently
+          </h3>
+          <ul className="space-y-2">
+            <li className="flex items-start space-x-3">
+              <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2.5 flex-shrink-0"></div>
+              <p 
+                className="text-sm font-modern"
+                style={{ color: isDarkMode ? '#D1D5DB' : '#6B7280' }}
+              >
+                Working as a <span className="underline">Software Developer</span> for various clients.
+              </p>
+            </li>
+            <li className="flex items-start space-x-3">
+              <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2.5 flex-shrink-0"></div>
+              <p 
+                className="text-sm font-modern"
+                style={{ color: isDarkMode ? '#D1D5DB' : '#6B7280' }}
+              >
+                Building <span className="underline">personal projects</span> and learning new technologies on weekends.
+              </p>
+            </li>
+            <li className="flex items-start space-x-3">
+              <div className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2.5 flex-shrink-0"></div>
+              <p 
+                className="text-sm font-modern"
+                style={{ color: isDarkMode ? '#D1D5DB' : '#6B7280' }}
+              >
+                Freelancing and helping clients all over the world with their digital solutions.
+              </p>
+            </li>
+          </ul>
+        </motion.div>
+        </div>
+      </div>
     </section>
   );
 };

@@ -92,8 +92,10 @@ import tesla from "./company/tesla.png";
 import accessories from "./projects/accessories.jpg";
 import authSystem from "./projects/auth-system.jpg";
 import blazorApp from "./projects/blazor-app.jpg";
+import bot from "./projects/bot.webp";
 import elearning from "./projects/elearning.jpg";
 import gameEngine from "./projects/game-engine.jpg";
+import Vgarden from "./projects/Vgarden.avif";
 import wordpressTheme from "./projects/wordpress-theme.jpg";
 
 // =====================
@@ -115,6 +117,9 @@ import Samurai from './events/codesamurai.jpg'
 import ICPC2023 from './events/ICPC2023.jpg'
 import ICPC2024 from './events/ICPC2024.png'
 import Sust from './events/SUSTIUPC.png'
+import cf from './events/cf.webp'
+import chef from './events/chef.png'
+import leet from './events/leet.png'
 
 
 // =====================
@@ -201,8 +206,10 @@ export {
   accessories,
   authSystem,
   blazorApp,
+  bot,
   elearning,
   gameEngine,
+  Vgarden,
   wordpressTheme,
 
   //Socials
@@ -217,4 +224,7 @@ export {
   ICPC2023,
   ICPC2024,
   Samurai,
+  cf,
+  chef,
+  leet,
 };

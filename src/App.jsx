@@ -1,62 +1,52 @@
-import React, { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AppLoader from "./components/AppLoader";
-
-// Lazy load components for better performance
-const Navbar = lazy(() => import("./components/Navbar"));
-const Hero = lazy(() => import("./components/Hero"));
-const About = lazy(() => import("./components/About"));
-const Tech = lazy(() => import("./components/Tech"));
-const Works = lazy(() => import("./components/Works"));
-const Experience = lazy(() => import("./components/Experience"));
-const Achievements = lazy(() => import("./components/Achievements"));
-const Contact = lazy(() => import("./components/Contact"));
-const Footer = lazy(() => import("./components/Footer"));
-
-// Main Portfolio Component
-const Portfolio = () => (
-  <div className='relative z-0 bg-primary mx-auto max-w-7xl'>
-    <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
-      <Navbar />
-      <Hero />
-    </div>
-    <About />
-    <Tech />
-    <Works />
-    <Experience />
-    <Achievements />
-    <div className='relative z-0'>
-      <Contact />
-    </div>
-    <Footer />
-  </div>
-);
-
-// 404 Component
-const NotFound = () => (
-  <div className="min-h-screen flex items-center justify-center bg-primary">
-    <div className="text-center">
-      <h1 className="text-6xl font-bold text-white mb-4">404</h1>
-      <p className="text-gray-300 mb-6">Page not found</p>
-      <button
-        onClick={() => window.location.href = '/'}
-        className="bg-tertiary text-white px-6 py-2 rounded-lg hover:bg-tertiary/80 transition-colors"
-      >
-        Go Home
-      </button>
-    </div>
-  </div>
-);
+import { BrowserRouter } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { About, Contact, Experience, Achievements, Hero, Navbar, Education, Portfolio } from "./components";
 
 const App = () => {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    // Listen for theme changes from navbar
+    const handleThemeChange = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+
+    // Initial theme check
+    handleThemeChange();
+
+    // Listen for class changes
+    const observer = new MutationObserver(handleThemeChange);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <BrowserRouter>
-      <Suspense fallback={<AppLoader />}>
-        <Routes>
-          <Route path="/" element={<Portfolio />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+      <div className='min-h-screen flex flex-col lg:flex-row'>
+        <Navbar activeSection={activeSection} onNavigate={setActiveSection} />
+        
+        <main 
+          className="flex-1 overflow-y-auto lg:ml-72 pb-20 lg:pb-0 transition-colors duration-300"
+          style={{ 
+            backgroundColor: isDarkMode ? '#000000' : '#FFFFFF',
+            color: isDarkMode ? '#F5F5F5' : '#262626'
+          }}
+        >
+          {activeSection === 'home' && <Hero />}
+          {activeSection === 'about' && <About onNavigate={setActiveSection} />}
+          {activeSection === 'portfolio' && <Portfolio />}
+          {activeSection === 'achievements' && <Achievements />}
+          {activeSection === 'experience' && <Experience />}
+          {activeSection === 'education' && <Education />}
+          {activeSection === 'contact' && <Contact />}
+        </main>
+      </div>
     </BrowserRouter>
   );
 }

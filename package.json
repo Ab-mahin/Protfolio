@@ -4,18 +4,21 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "dev:clean": "rm -rf node_modules/.vite && vite --host 0.0.0.0",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "start": "npm run dev"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@fortawesome/fontawesome-svg-core": "^7.0.1",
+    "@fortawesome/free-brands-svg-icons": "^7.0.1",
+    "@fortawesome/free-solid-svg-icons": "^7.0.1",
+    "@fortawesome/react-fontawesome": "^3.0.2",
     "@react-three/drei": "^10.6.1",
     "@react-three/fiber": "^9.3.0",
     "cobe": "^0.6.4",
+    "dotted-map": "^2.2.3",
     "framer-motion": "^12.23.12",
     "maath": "^0.10.8",
     "react": "^19.1.1",
