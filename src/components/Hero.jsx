@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { cvItems } from '../constants/documents';
 
 const Hero = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -46,41 +47,42 @@ const Hero = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <div className="flex items-center mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center mb-6 space-y-4 sm:space-y-0 sm:space-x-4">
             <div 
-              className="w-10 h-10 rounded-full mr-4 flex items-center justify-center border"
+              className="w-16 h-16 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border mx-auto sm:mx-0"
               style={{ backgroundColor: isDarkMode ? '#0a0a0a' : '#F5F5F5', borderColor: isDarkMode ? '#262626' : '#e5e7eb' }}
             >
               <span 
-                className="text-sm font-bold"
+                className="text-lg sm:text-sm font-bold"
                 style={{ color: isDarkMode ? '#F5F5F5' : '#262626' }}
               >
                 AM
               </span>
             </div>
+            <div className="text-center sm:text-left">
+              <h1 
+                className="text-3xl sm:text-4xl md:text-5xl font-modern-bold mb-2 sm:mb-3 bg-clip-text text-transparent"
+                style={{ backgroundImage: isDarkMode ? 'linear-gradient(to bottom, #fafafa, #d4d4d4)' : 'linear-gradient(to bottom, #262626, #737373)' }}
+              >
+                Hi, I'm Ab Mahin!
+              </h1>
+              <h2 
+                className="text-base sm:text-lg md:text-xl mb-1 sm:mb-2 font-modern" 
+                style={{ 
+                  fontWeight: 400,
+                  color: isDarkMode ? '#D1D5DB' : '#6B7280'
+                }}
+              >
+                Software Developer, Problem Solver, and Tech Enthusiast.
+              </h2>
+              <p 
+                className="text-xs sm:text-sm font-modern"
+                style={{ color: isDarkMode ? '#9CA3AF' : '#6B7280' }}
+              >
+                (Ab-Mahin for non-native speakers)
+              </p>
+            </div>
           </div>
-          
-          <h1 
-            className="text-4xl md:text-5xl font-modern-bold mb-3 bg-clip-text text-transparent"
-            style={{ backgroundImage: isDarkMode ? 'linear-gradient(to bottom, #fafafa, #d4d4d4)' : 'linear-gradient(to bottom, #262626, #737373)' }}
-          >
-            Hi, I'm Ab Mahin!
-          </h1>
-          <h2 
-            className="text-lg md:text-xl mb-2 font-modern" 
-            style={{ 
-              fontWeight: 400,
-              color: isDarkMode ? '#D1D5DB' : '#6B7280'
-            }}
-          >
-            Software Developer, Problem Solver, and Tech Enthusiast.
-          </h2>
-          <p 
-            className="text-sm font-modern"
-            style={{ color: isDarkMode ? '#9CA3AF' : '#6B7280' }}
-          >
-            (Ab-Mahin for non-native speakers)
-          </p>
         </motion.div>
 
         <motion.div
@@ -123,6 +125,53 @@ const Hero = () => {
               </p>
             </li>
           </ul>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-8"
+        >
+          <div className="flex flex-col sm:flex-row gap-4">
+            {cvItems.map((cv, index) => (
+              <motion.button
+                key={index}
+                onClick={() => {
+                  if (cv.src) {
+                    // Create a temporary link element to trigger download
+                    const link = document.createElement('a');
+                    link.href = cv.src;
+                    link.download = `${cv.title}.pdf`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }
+                }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2"
+                style={{ 
+                  backgroundColor: isDarkMode ? '#404040' : '#E0E0E0', 
+                  color: isDarkMode ? '#F5F5F5' : '#000000', 
+                  border: `1px solid ${isDarkMode ? '#404040' : '#D1D5DB'}`,
+                  focusRingColor: isDarkMode ? '#404040' : '#E0E0E0'
+                }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onFocus={(e) => { 
+                  e.currentTarget.style.outline = 'none'; 
+                  e.currentTarget.style.boxShadow = `0 0 0 2px ${isDarkMode ? '#404040' : '#E0E0E0'}`;
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Download {cv.title}</span>
+              </motion.button>
+            ))}
+          </div>
         </motion.div>
         </div>
       </div>

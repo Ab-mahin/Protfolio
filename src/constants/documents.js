@@ -1,6 +1,6 @@
 import { accessories, authSystem, blazorApp, bot, elearning, gameEngine, github, wordpressTheme, Vgarden } from "../assets";
 import { whatsApp, facebook, instagram, linkedIn, csharp, dotnetPink, tailwind, react, sqlite, py, nodejs, cplusplus } from "../assets";
-import {Sust,Buet, ICPC2023, ICPC2024,Samurai, cf, chef, leet} from '../assets'
+import {Sust,Buet, ICPC2023, ICPC2024,Samurai, cf, chef, leet, Bu, Raj, zila} from '../assets'
 export const myProjects = [
   {
     id: 1,
@@ -96,20 +96,30 @@ export const educationItems = [
     institution: "University Of Barishal",
     year: "2020 - 2025",
     description: "Focused on software engineering, algorithms, and data structures. Graduated with honors.",
-    gpa: "3.3/4.0"
+    gpa: "3.3/4.0",
+    img : Bu,
   },
   {
     degree: "Higher Secondary Certificate",
     institution: "Govt. Rajendra College, Faridpur",
     year: "2016 - 2019",
     description: "Science stream with focus on Mathematics, Physics, and Chemistry.",
-    gpa: "4.33/5.0"
+    gpa: "4.33/5.0",
+    img : Raj,
   },
   {
     degree: "Secondary School Certificate",
     institution: "Faridpur Zilla School, Faridpur",
     year: "2014 - 2016",
     description: "Science stream with excellent academic performance.",
-    gpa: "5.0/5.0"
+    gpa: "5.0/5.0",
+    img : zila,
   }
+];
+
+export const cvItems = [
+  {
+    title: "CV",
+    src: "",
+  },
 ];

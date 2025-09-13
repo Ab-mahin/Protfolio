@@ -121,6 +121,12 @@ import cf from './events/cf.webp'
 import chef from './events/chef.png'
 import leet from './events/leet.png'
 
+// =====================
+// Education
+// =====================
+import Bu from './education/Bu.png'
+import Raj from './education/Raj.png'
+import zila from './education/zila.png'
 
 // =====================
 // Export all
@@ -227,4 +233,9 @@ export {
   cf,
   chef,
   leet,
+
+  //Education
+  Bu,
+  Raj,
+  zila,
 };

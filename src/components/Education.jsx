@@ -60,9 +60,20 @@ const Education = () => {
               whileHover={{ y: -2 }}
             >
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold mb-1 transition-colors" style={{ color: isDarkMode ? '#F5F5F5' : '#000000' }}>{item.degree}</h3>
-                  <p className="font-medium transition-colors" style={{ color: isDarkMode ? '#F5F5F5' : '#000000' }}>{item.institution}</p>
+                <div className="flex items-center space-x-4">
+                  {item.img && (
+                    <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                      <img 
+                        src={item.img} 
+                        alt={item.institution}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1 transition-colors" style={{ color: isDarkMode ? '#F5F5F5' : '#000000' }}>{item.degree}</h3>
+                    <p className="font-medium transition-colors" style={{ color: isDarkMode ? '#F5F5F5' : '#000000' }}>{item.institution}</p>
+                  </div>
                 </div>
                 <div className="flex items-center space-x-4 mt-2 md:mt-0">
                   <span className="text-sm transition-colors" style={{ color: isDarkMode ? '#F5F5F5' : '#000000' }}>{item.year}</span>

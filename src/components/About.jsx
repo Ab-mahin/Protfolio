@@ -109,7 +109,7 @@ const About = ({ onNavigate }) => {
           {/* Gradient Overlay - Top Section Only */}
           <div className="absolute top-0 left-0 right-0 h-1/2 pointer-events-none" style={{ background: isDarkMode ? 'linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)' : 'linear-gradient(to bottom, rgba(245,245,245,0.8) 0%, rgba(245,245,245,0.4) 50%, transparent 100%)' }}></div>
 
-          <div className="relative z-10 flex flex-col justify-end min-h-[60px] xs:min-h-[80px] sm:min-h-[120px] md:min-h-[180px] lg:min-h-[220px] xl:min-h-[250px]">
+          <div className="relative z-0 flex flex-col justify-end min-h-[60px] xs:min-h-[80px] sm:min-h-[120px] md:min-h-[180px] lg:min-h-[220px] xl:min-h-[250px]">
             <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-4">
               <div className="w-6 h-6 md:w-10 md:h-10 rounded-full flex items-center justify-center" style={{ 
                 backgroundImage: isDarkMode ? 'linear-gradient(to bottom right, #171717, #404040)' : 'linear-gradient(to bottom right, #E5E5E5, #D1D5DB)'
@@ -135,7 +135,7 @@ const About = ({ onNavigate }) => {
         
          {/* Skills & Technologies */}
          <div className="xl:col-span-3 p-6 relative overflow-hidden mt-16 mb-8" style={{ backgroundColor: isDarkMode ? '#000000' : '#FFFFFF' }}>
-           <div className="relative z-10 pt-12 pb-8">
+           <div className="relative z-0 pt-12 pb-8">
              <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: isDarkMode ? '#F5F5F5' : '#000000' }}>Tech Stack</h3>
              <p className="text-lg leading-relaxed mb-6" style={{ color: isDarkMode ? '#D4D4D4' : '#333333' }}>
                I specialize in a variety of languages, frameworks, and tools that allow me to build robust and scalable applications.
@@ -165,7 +165,7 @@ const About = ({ onNavigate }) => {
         <div className="group rounded-3xl p-[1px] shadow-lg hover:shadow-xl transition-shadow duration-300 relative overflow-hidden xl:col-span-3 max-w-xl md:max-w-2xl mx-auto" style={{ backgroundColor: isDarkMode ? '#050505' : '#FFFFFF' }}>
           <div className="rounded-3xl p-8 md:p-10 relative" style={{ backgroundColor: isDarkMode ? '#050505' : '#FFFFFF' }}>
 
-            <div className="relative z-10 text-center">
+            <div className="relative z-0 text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: isDarkMode ? '#F5F5F5' : '#000000' }}>
                 Ready to Start a Project?
               </h3>
