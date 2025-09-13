@@ -18,12 +18,35 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-100% - 1rem));
+    transform: translateX(calc(-50% - 2rem));
   }
 }
 
 .animate-scroll {
-  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+  animation: scroll var(--animation-duration, 20s) var(--animation-direction, forwards) linear infinite;
+}
+
+/* ===========================================
+   TECH STACK CARDS STYLING
+   =========================================== */
+.tech-card-dark {
+  background-color: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tech-card-light {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tech-scroller-container-dark {
+  background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.8) 100%);
+}
+
+.tech-scroller-container-light {
+  background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, transparent 20%, transparent 80%, rgba(255,255,255,0.8) 100%);
 }
 
 /* ===========================================

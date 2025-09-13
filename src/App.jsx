@@ -3,8 +3,24 @@ import { useState, useEffect } from "react";
 import { About, Contact, Experience, Achievements, Hero, Navbar, Education, Portfolio } from "./components";
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Initialize from localStorage or default to true
+    const savedTheme = localStorage.getItem('isDarkMode');
+    return savedTheme !== null ? JSON.parse(savedTheme) : true;
+  });
   const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    // Apply theme to document and save to localStorage
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    
+    // Save theme preference to localStorage
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
 
   useEffect(() => {
     // Listen for theme changes from navbar
@@ -39,7 +55,7 @@ const App = () => {
           }}
         >
           {activeSection === 'home' && <Hero />}
-          {activeSection === 'about' && <About onNavigate={setActiveSection} />}
+          {activeSection === 'about' && <About onNavigate={setActiveSection} isDarkMode={isDarkMode} />}
           {activeSection === 'portfolio' && <Portfolio />}
           {activeSection === 'achievements' && <Achievements />}
           {activeSection === 'experience' && <Experience />}

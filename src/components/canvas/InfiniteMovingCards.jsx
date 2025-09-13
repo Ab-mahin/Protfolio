@@ -6,33 +6,11 @@ export const InfiniteMovingCards = ({
   direction = "left",
   speed = "fast",
   pauseOnHover = true,
-  className
+  className,
+  isDarkMode = true
 }) => {
   const containerRef = useRef(null);
   const scrollerRef = useRef(null);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Initialize with current theme to prevent flash
-    if (typeof document !== 'undefined') {
-      return document.documentElement.classList.contains('dark');
-    }
-    return true; // fallback for SSR
-  });
-
-  useEffect(() => {
-    const handleThemeChange = () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      setIsDarkMode(isDark);
-    };
-
-    handleThemeChange();
-    const observer = new MutationObserver(handleThemeChange);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     addAnimation();
@@ -84,7 +62,8 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={twMerge(
-        "scroller relative z-20 w-full max-w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 w-full max-w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]",
+        isDarkMode ? "tech-scroller-container-dark" : "tech-scroller-container-light",
         className
       )}>
       <ul
@@ -96,28 +75,42 @@ export const InfiniteMovingCards = ({
         )}>
         {items.map((item, idx) => (
           <li
-            className="relative w-[180px] max-w-full shrink-0 rounded-2xl border border-b-0 px-4 py-3 sm:w-[200px] sm:px-6 sm:py-4 md:w-[250px]"
-            style={{
-              borderColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
-              backgroundColor: isDarkMode ? '#1a1a1a' : '#ffffff',
-              background: isDarkMode 
-                ? 'linear-gradient(180deg, #1a1a1a, #0a0a0a)' 
-                : '#ffffff',
-              boxShadow: isDarkMode 
-                ? '0 2px 4px rgba(0, 0, 0, 0.3)' 
-                : '0 2px 4px rgba(0, 0, 0, 0.05)',
-              backgroundImage: isDarkMode ? 'linear-gradient(180deg, #1a1a1a, #0a0a0a)' : 'none'
-            }}
+            className={twMerge(
+              "relative w-[180px] max-w-full shrink-0 rounded-2xl border px-4 py-4 sm:w-[200px] sm:px-6 sm:py-5 md:w-[250px]",
+              "transition-all duration-300 hover:scale-105 hover:shadow-lg group",
+              isDarkMode ? "tech-card-dark" : "tech-card-light"
+            )}
             key={item.name}>
-            <div className="flex flex-col items-center justify-center text-center">
-              <div className="mb-3">
+            
+            <div className="relative flex flex-col items-center justify-center text-center">
+              {/* Icon container */}
+              <div className="mb-4 p-3 rounded-xl">
                 <img 
                   src={item.image} 
                   alt={item.name}
                   className="w-12 h-12 object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
                 />
+                {/* Fallback text */}
+                <div 
+                  className="w-12 h-12 flex items-center justify-center text-lg font-bold"
+                  style={{ 
+                    display: 'none',
+                    color: isDarkMode ? '#F5F5F5' : '#000000'
+                  }}
+                >
+                  {item.name.charAt(0)}
+                </div>
               </div>
-              <span className="text-sm font-medium" style={{ color: isDarkMode ? '#F5F5F5' : '#000000' }}>
+              
+              {/* Tech name */}
+              <span 
+                className="text-sm font-semibold"
+                style={{ color: isDarkMode ? '#F5F5F5' : '#000000' }}
+              >
                 {item.name}
               </span>
             </div>
