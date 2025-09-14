@@ -40,27 +40,27 @@ const CopyEmailButton = () => {
     <motion.button
       onClick={copyToClipboard}
       whileTap={{ scale: 0.98 }}
-      className="relative border px-1 py-4 text-sm text-center rounded-full font-extralight w-[12rem] cursor-pointer overflow-hidden outline-none focus:outline-none focus:ring-0 focus-visible:outline-none"
+      className="relative px-1 py-4 text-sm text-center rounded-full font-extralight w-[12rem] cursor-pointer overflow-hidden outline-none focus:outline-none focus:ring-0 focus-visible:outline-none"
       style={{ 
         backgroundColor: isDarkMode ? '#404040' : '#FFFFFF', 
         color: isDarkMode ? '#F5F5F5' : '#000000', 
-        border: `1px solid ${isDarkMode ? '#404040' : '#E0E0E0'} !important`,
+        border: isDarkMode ? 'none' : '1px solid #E0E0E0',
         WebkitTapHighlightColor: 'transparent',
         boxShadow: 'none !important'
       }}
       onFocus={(e) => {
         e.currentTarget.style.setProperty('outline', 'none', 'important');
         e.currentTarget.style.setProperty('box-shadow', 'none', 'important');
-        e.currentTarget.style.setProperty('border', `1px solid ${isDarkMode ? '#404040' : '#E0E0E0'}`, 'important');
+        e.currentTarget.style.setProperty('border', isDarkMode ? 'none' : '1px solid #E0E0E0', 'important');
       }}
       onBlur={(e) => {
-        e.currentTarget.style.setProperty('border', `1px solid ${isDarkMode ? '#404040' : '#E0E0E0'}`, 'important');
+        e.currentTarget.style.setProperty('border', isDarkMode ? 'none' : '1px solid #E0E0E0', 'important');
       }}
       onMouseDown={(e) => {
-        e.currentTarget.style.setProperty('border', `1px solid ${isDarkMode ? '#404040' : '#E0E0E0'}`, 'important');
+        e.currentTarget.style.setProperty('border', isDarkMode ? 'none' : '1px solid #E0E0E0', 'important');
       }}
       onMouseUp={(e) => {
-        e.currentTarget.style.setProperty('border', `1px solid ${isDarkMode ? '#404040' : '#E0E0E0'}`, 'important');
+        e.currentTarget.style.setProperty('border', isDarkMode ? 'none' : '1px solid #E0E0E0', 'important');
       }}
     >
       <AnimatePresence mode="wait">

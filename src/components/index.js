@@ -26,6 +26,8 @@ import Portfolio from "./Portfolio";
 import Writing from "./Writing";
 import Gallery from "./Gallery";
 import CanvasLoader from "./Loader";
+import { AppLoader, LoaderOne, LoaderTwo, LoaderThree, LoaderFour, LoaderFive } from "./Loader";
+import DownloadCVButton from "./DownloadCVButton";
 import Footer from "./Footer";
 import Card from "../card/card";
 
@@ -46,6 +48,13 @@ export {
   Writing,
   Gallery,
   CanvasLoader,
+  AppLoader,
+  LoaderOne,
+  LoaderTwo,
+  LoaderThree,
+  LoaderFour,
+  LoaderFive,
+  DownloadCVButton,
   Alert, 
   Timeline, 
   ComputersCanvas, 

@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { About, Contact, Experience, Achievements, Hero, Navbar, Education, Portfolio } from "./components";
+import { AppLoader } from "./components/Loader";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -9,6 +10,7 @@ const App = () => {
     return savedTheme !== null ? JSON.parse(savedTheme) : true;
   });
   const [activeSection, setActiveSection] = useState("home");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Apply theme to document and save to localStorage
@@ -41,6 +43,20 @@ const App = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds loading time
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Show loader while loading
+  if (isLoading) {
+    return <AppLoader isDarkMode={isDarkMode} />;
+  }
 
   return (
     <BrowserRouter>

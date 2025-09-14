@@ -281,7 +281,7 @@ const About = ({ onNavigate, isDarkMode }) => {
                   }}
                   onFocus={(e) => { e.currentTarget.style.outline = 'none'; e.currentTarget.style.boxShadow = 'none'; }}
                 >
-                  <span>Let’s Talk</span>
+                  <span>Let's Talk</span>
                   <span>↗</span>
                 </button>
               </div>

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { cvItems } from '../constants/documents';
+import DownloadCVButton from './DownloadCVButton';
 
 const Hero = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -134,43 +134,7 @@ const Hero = () => {
           className="mt-8"
         >
           <div className="flex flex-col sm:flex-row gap-4">
-            {cvItems.map((cv, index) => (
-              <motion.button
-                key={index}
-                onClick={() => {
-                  if (cv.src) {
-                    // Create a temporary link element to trigger download
-                    const link = document.createElement('a');
-                    link.href = cv.src;
-                    link.download = `${cv.title}.pdf`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                  }
-                }}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2"
-                style={{ 
-                  backgroundColor: isDarkMode ? '#404040' : '#E0E0E0', 
-                  color: isDarkMode ? '#F5F5F5' : '#000000', 
-                  border: `1px solid ${isDarkMode ? '#404040' : '#D1D5DB'}`,
-                  focusRingColor: isDarkMode ? '#404040' : '#E0E0E0'
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onFocus={(e) => { 
-                  e.currentTarget.style.outline = 'none'; 
-                  e.currentTarget.style.boxShadow = `0 0 0 2px ${isDarkMode ? '#404040' : '#E0E0E0'}`;
-                }}
-                onBlur={(e) => {
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <span>Download {cv.title}</span>
-              </motion.button>
-            ))}
+            <DownloadCVButton isDarkMode={isDarkMode} variant="filled" />
           </div>
         </motion.div>
         </div>
