@@ -23,7 +23,7 @@ function WorldMap({ dots = [], lineColor = "#F5F5F5" }) {
     return () => observer.disconnect();
   }, []);
 
-  const map = useMemo(() => new DottedMap({ height: 70, grid: "diagonal" }), []);
+  const map = useMemo(() => new DottedMap({ height: 60, grid: "diagonal" }), []);
 
   const svgMap = useMemo(
     () =>
@@ -110,6 +110,23 @@ function WorldMap({ dots = [], lineColor = "#F5F5F5" }) {
 }
 
 export function CustomeGlobe() {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.classList.contains('dark');
+    }
+    return true;
+  });
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
+
   const dots = [
     { start: { lat: 64.2008, lng: -149.4937 }, end: { lat: 34.0522, lng: -118.2437 } },
     { start: { lat: 64.2008, lng: -149.4937 }, end: { lat: -15.7975, lng: -47.8919 } },
@@ -118,5 +135,5 @@ export function CustomeGlobe() {
     { start: { lat: 28.6139, lng: 77.209 }, end: { lat: 43.1332, lng: 131.9113 } },
     { start: { lat: 28.6139, lng: 77.209 }, end: { lat: -1.2921, lng: 36.8219 } },
   ];
-  return <WorldMap dots={dots} lineColor="#F5F5F5" />;
+  return <WorldMap dots={dots} lineColor={isDark ? "#F5F5F5" : "#000000"} />;
 }

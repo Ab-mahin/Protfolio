@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-// Set theme from localStorage or default to dark mode
+// Always default to dark mode on first visit
 const savedTheme = localStorage.getItem('isDarkMode');
 const isDarkMode = savedTheme !== null ? JSON.parse(savedTheme) : true;
 
-if (isDarkMode) {
-  document.documentElement.classList.add('dark');
-} else {
+// Ensure dark mode is applied immediately
+document.documentElement.classList.add('dark');
+
+if (!isDarkMode && savedTheme !== null) {
   document.documentElement.classList.remove('dark');
 }
 

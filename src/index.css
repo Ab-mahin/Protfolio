@@ -4,6 +4,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 /* ===========================================
+   GLOBAL HTML/BODY SETUP
+   =========================================== */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
+}
+
+/* ===========================================
    TAILWIND CSS IMPORTS
    =========================================== */
 @tailwind base;
@@ -14,11 +35,15 @@
    SCROLLBAR HIDE UTILITY
    =========================================== */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;  /* Safari and Chrome */
+  display: none;
+  /* Safari and Chrome */
 }
 
 /* ===========================================
@@ -28,6 +53,7 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(calc(-50% - 2rem));
   }
@@ -53,22 +79,26 @@
 }
 
 .tech-scroller-container-dark {
-  background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.8) 100%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 .tech-scroller-container-light {
-  background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, transparent 20%, transparent 80%, rgba(255,255,255,0.8) 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, transparent 20%, transparent 80%, rgba(255, 255, 255, 0.8) 100%);
 }
 
 /* ===========================================
    CUSTOM UTILITY CLASSES
    =========================================== */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
 }
-.scrollbar-hide::-webkit-scrollbar { 
-  display: none;  /* Safari and Chrome */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
 }
 
 /* Remove all button focus borders */
@@ -89,7 +119,8 @@ textarea:focus {
 /* Smooth page transitions */
 .transition-transform {
   will-change: transform;
-  transform: translateZ(0); /* Force hardware acceleration */
+  transform: translateZ(0);
+  /* Force hardware acceleration */
 }
 
 /* Vertical text for navbar */
@@ -106,28 +137,19 @@ textarea:focus {
   --color-primary: #050816;
   --color-secondary: #aaa6c3;
   --color-tertiary: #151030;
-  
+
   /* Dark Theme Colors */
   --color-black-100: #100d25;
   --color-black-200: #090325;
   --color-white-100: #f3f3f3;
-  
+
   /* Additional Theme Colors */
   --color-midnight: #06091f;
   --color-navy: #161a31;
   --color-indigo: #1f1e39;
   --color-storm: #282b4b;
-  
-  /* Accent Colors */
-  --color-aqua: #33c2cc;
-  --color-mint: #57db96;
-  --color-royal: #5c33cc;
-  --color-lavender: #7a57db;
-  --color-fuchsia: #ca2f8c;
-  --color-orange: #cc6033;
-  --color-sand: #d6995c;
-  --color-coral: #ea4884;
-  
+
+
   /* Animation Variables */
   --animate-orbit: orbit 50s linear infinite;
   --animate-marquee: marquee 50s linear infinite;
@@ -165,14 +187,11 @@ body {
    =========================================== */
 @keyframes orbit {
   0% {
-    transform: rotate(calc(var(--angle) * 1deg))
-      translateY(calc(var(--radius) * 1px)) 
-      rotate(calc(var(--angle) * -1deg));
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
   }
+
   100% {
-    transform: rotate(calc(var(--angle) * 1deg + 360deg))
-      translateY(calc(var(--radius) * 1px))
-      rotate(calc((var(--angle) * -1deg) - 360deg));
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
   }
 }
 
@@ -180,6 +199,7 @@ body {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(calc(-100% - var(--gap)));
   }
@@ -189,6 +209,7 @@ body {
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(calc(-100% - var(--gap)));
   }
@@ -366,7 +387,7 @@ body {
   .c-space {
     @apply px-4;
   }
-  
+
   .text-heading {
     @apply text-2xl;
   }
@@ -376,7 +397,7 @@ body {
   .c-space {
     @apply px-16;
   }
-  
+
   .text-heading {
     @apply text-5xl;
   }
@@ -394,7 +415,7 @@ body {
   .no-print {
     display: none !important;
   }
-  
+
   body {
     background: white !important;
     color: black !important;

@@ -5,7 +5,7 @@ import { AppLoader } from "./components/Loader";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Initialize from localStorage or default to true
+    // Always default to dark mode on first visit
     const savedTheme = localStorage.getItem('isDarkMode');
     return savedTheme !== null ? JSON.parse(savedTheme) : true;
   });
@@ -64,7 +64,7 @@ const App = () => {
         <Navbar activeSection={activeSection} onNavigate={setActiveSection} />
         
         <main 
-          className="flex-1 overflow-y-auto lg:ml-72 pb-20 lg:pb-0 transition-colors duration-300"
+          className="flex-1 min-h-[100dvh] overflow-y-auto scrollbar-hide lg:ml-72 pt-14 sm:pt-16 md:pt-20 lg:pt-0 pb-0 lg:pb-0 transition-colors duration-300"
           style={{ 
             backgroundColor: isDarkMode ? '#000000' : '#FFFFFF',
             color: isDarkMode ? '#F5F5F5' : '#262626'

@@ -60,10 +60,10 @@ const Portfolio = () => {
   const currentProjects = activeTab === 'personal' ? personalProjects : commercialProjects;
 
   return (
-    <div className="min-h-screen flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row" style={{ backgroundColor: isDarkMode ? '#000000' : '#FFFFFF' }}>
+    <div className="min-h-full flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row" style={{ backgroundColor: isDarkMode ? '#000000' : '#FFFFFF' }}>
       {/* Left Content Area - Responsive width */}
       <div
-        className="w-full sm:w-full md:w-full lg:w-2/5 xl:w-2/5 2xl:w-1/3 pl-1 sm:pl-2 md:pl-3 lg:pl-4 xl:pl-6 2xl:pl-8 pr-1 sm:pr-2 md:pr-3 lg:pr-2 xl:pr-3 2xl:pr-6 pt-16 sm:pt-16 md:pt-16 lg:pt-4 xl:pt-6 2xl:pt-12 pb-2 sm:pb-4 md:pb-6 lg:pb-4 xl:pb-6 2xl:pb-12 overflow-hidden lg:overflow-y-auto"
+        className="w-full sm:w-full md:w-full lg:w-2/5 xl:w-2/5 2xl:w-1/3 pl-1 sm:pl-2 md:pl-3 lg:pl-4 xl:pl-6 2xl:pl-8 pr-1 sm:pr-2 md:pr-3 lg:pr-2 xl:pr-3 2xl:pr-6 pt-0 lg:pt-4 xl:pt-6 2xl:pt-12 pb-2 sm:pb-4 md:pb-6 lg:pb-4 xl:pb-6 2xl:pb-12 overflow-hidden lg:overflow-y-auto scrollbar-hide"
         style={{ backgroundColor: isDarkMode ? '#050505' : '#F5F5F5' }}
       >
         {/* Header */}

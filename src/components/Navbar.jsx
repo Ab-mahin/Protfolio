@@ -83,19 +83,32 @@ const Navbar = ({ activeSection = "home", onNavigate }) => {
 
   return (
     <>
-      {/* Mobile Logo/Avatar - Top Left Corner */}
-      <motion.button
-        className="lg:hidden fixed top-3 left-3 z-50 w-8 h-8 rounded-full flex items-center justify-center group hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-0 backdrop-blur-md"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      {/* Mobile Blur Header Row */}
+      <div 
+        className="lg:hidden fixed top-0 left-0 right-0 z-40 h-14 flex items-center px-3"
         style={{ 
-          backgroundColor: isDarkMode ? 'rgba(5, 5, 5, 0.8)' : 'rgba(0, 0, 0, 0.8)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)'
+          backgroundColor: isDarkMode ? 'rgba(15, 15, 15, 0.7)' : 'rgba(255, 255, 255, 0.7)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          borderBottom: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+          boxShadow: isDarkMode 
+            ? '0 4px 24px 0 rgba(0, 0, 0, 0.2)' 
+            : '0 4px 24px 0 rgba(0, 0, 0, 0.08)'
         }}
-        whileTap={{ scale: 0.95 }}
       >
-        <span className="font-bold text-xs" style={{ color: isDarkMode ? '#F5F5F5' : '#FFFFFF' }}>AM</span>
-      </motion.button>
+        {/* Mobile Logo/Avatar - Inside Blur Row */}
+        <motion.button
+          className="w-8 h-8 rounded-full flex items-center justify-center group hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-0"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          style={{ 
+            backgroundColor: isDarkMode ? 'rgba(5, 5, 5, 0.8)' : 'rgba(0, 0, 0, 0.8)',
+            border: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.15)' : 'rgba(255, 255, 255, 0.15)'}`,
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <span className="font-bold text-xs" style={{ color: '#FFFFFF' }}>AM</span>
+        </motion.button>
+      </div>
 
       {/* Mobile Navigation Overlay */}
       {isMobileMenuOpen && (
@@ -113,7 +126,7 @@ const Navbar = ({ activeSection = "home", onNavigate }) => {
         initial={{ x: '-100%' }}
         animate={{ x: isMobileMenuOpen ? '0%' : '-100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="lg:hidden fixed left-0 top-0 h-full w-80 z-50 overflow-y-auto overflow-x-hidden"
+        className="lg:hidden fixed left-0 top-0 h-full w-80 z-50 overflow-y-auto scrollbar-hide overflow-x-hidden"
         style={{ backgroundColor: isDarkMode ? '#262626' : '#FFFFFF' }}
       >
         <div className="p-6">
