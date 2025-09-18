@@ -158,7 +158,7 @@ const About = ({ onNavigate, isDarkMode }) => {
         paddingBottom: "2rem",
       }}
     >
-      <div className="max-w-3xl mx-auto mb-16" style={{ paddingTop: "3rem" }}>
+      <div className="max-w-3xl mx-auto mb-16" style={{ paddingTop: "1rem" }}>
         <h1
           className="text-4xl md:text-5xl font-bold mb-6 mt-8"
           style={{ color: isDarkMode ? "#F5F5F5" : "#000000" }}
