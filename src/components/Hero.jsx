@@ -114,7 +114,7 @@ const Hero = () => {
                   style={{ color: isDarkMode ? "#D1D5DB" : "#6B7280" }}
                 >
                   I want to become a{" "}
-                  <span className="underline">Software Developer</span> and
+                  <span className="underline">Software Engineer</span> and
                   build technology that fulfills my dreams.
                 </p>
               </li>
