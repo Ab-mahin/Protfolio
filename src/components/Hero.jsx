@@ -83,7 +83,7 @@ const Hero = () => {
                     color: isDarkMode ? "#D1D5DB" : "#6B7280",
                   }}
                 >
-                  Software Developer, Problem Solver, and Tech Enthusiast.
+                  Problem Solver, and Tech Enthusiast.
                 </h2>
                 <p
                   className="text-xs sm:text-sm font-modern"
