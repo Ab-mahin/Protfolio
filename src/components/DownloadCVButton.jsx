@@ -12,7 +12,7 @@ const DownloadCVButton = ({ isDarkMode = true, variant = "default" }) => {
       
       // Create a link element to trigger download
       const link = document.createElement('a');
-      link.href = '/cv/Mahin(CV).pdf';
+      link.href = '/CV/Abdullah_Al_Mahin (CV).pdf';
       link.download = 'Ab_Mahin_CV.pdf';
       link.target = '_blank';
       
