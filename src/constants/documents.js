@@ -80,7 +80,7 @@ export const experiences = [
 ];
 
 export const achievementCards = [
-  { title: "Ab.Mahin", src: cf, view: "https://codeforces.com/profile/V.A.V" },
+  { title: "Ab-Mahin", src: cf, view: "https://codeforces.com/profile/Ab-Mahin" },
   { title: "ab_mahin", src: chef, view: "https://www.codechef.com/users/ab_mahin" },
   { title: "Ab.Mahin", src: leet, view: "https://leetcode.com/u/Ab_mahin/" },
   { title: "ICPC Asia Dhaka Regional Contest Onsite 2024", src: ICPC2024 },
